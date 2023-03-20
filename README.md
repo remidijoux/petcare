@@ -1,6 +1,6 @@
 # ProjetWeb
 Sujet du projet :  
-Gestion de l'appel  
+PETCARE
 ## Récupérer le projet
 git clone  https://github.com/remidijoux/petcare.git
 git init  
