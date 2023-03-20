@@ -1,8 +1,8 @@
 # ProjetWeb
 Sujet du projet :  
-Gestion de l'appel  
+PETCARE
 ## Récupérer le projet
-git clone https://github.com/bouboucouscous/ProjetWeb.git  
+git clone  https://github.com/remidijoux/petcare.git
 git init  
 git fetch  
 git config --global user.name "Your Name"  
