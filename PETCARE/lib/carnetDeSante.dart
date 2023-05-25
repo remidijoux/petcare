@@ -4,33 +4,160 @@ void main() {
   runApp(const MyApp());
 }
 
+class TypeAnimal extends StatefulWidget {
+  @override
+  _DropdownMenuWidgetState createState() => _DropdownMenuWidgetState();
+}
+
+class _DropdownMenuWidgetState extends State<TypeAnimal> {
+  String selectedValue = 'Chien';
+
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      value: selectedValue,
+      onChanged: (String? newValue) {
+        setState(() {
+          selectedValue = newValue!;
+        });
+      },
+      items: <String>['Chien', 'Chat', 'Oiseau', 'Rongeur',]
+          .map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+    );
+  }
+}
+
+class SexeAnimal extends StatefulWidget {
+  @override
+  _DropdownMenuWidgetState2 createState() => _DropdownMenuWidgetState2();
+}
+
+class _DropdownMenuWidgetState2 extends State<SexeAnimal> {
+  String selectedValue = 'Mâle';
+
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      value: selectedValue,
+      onChanged: (String? newValue) {
+        setState(() {
+          selectedValue = newValue!;
+        });
+      },
+      items: <String>['Mâle', 'Femelle',]
+          .map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+    );
+  }
+}
+
+class DateOfBirthPicker extends StatefulWidget {
+  @override
+  _DateOfBirthPickerState createState() => _DateOfBirthPickerState();
+}
+
+class _DateOfBirthPickerState extends State<DateOfBirthPicker> {
+  late DateTime selectedDate;
+
+  void initState(){
+    super.initState();
+    selectedDate = DateTime.now();
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: selectedDate ?? DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
+    );
+
+    if (pickedDate != null && pickedDate != selectedDate) {
+      setState(() {
+        selectedDate = pickedDate;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        _selectDate(context);
+      },
+      child: Container(
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.grey),
+        ),
+        child: Text(
+          selectedDate != null
+              ? '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}'
+              : 'Sélectionner une date',
+          style: TextStyle(fontSize: 16),
+        ),
+      ),
+    );
+  }
+}
+
+class AnimalExam {
+  final String name;
+  final String result;
+
+  AnimalExam({required this.name, required this.result});
+}
+
+class AnimalDetails extends StatefulWidget {
+  @override
+  _AnimalDetailsState createState() => _AnimalDetailsState();
+}
+class _AnimalDetailsState extends State<AnimalDetails> {
+  List<AnimalExam> exams = [];
+
+  void addExam(String name, String result) {
+    setState(() {
+      exams.add(AnimalExam(name: name, result: result));
+    });
+  }
+
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Menu déroulant'),
+          title: Text('Carnet de santé'),
         ),
-        body: Center(
-          child: DropdownButton<String>(
-            value: 'Type animal', // Option sélectionnée par défaut
-            items: <String>[
-              'Type animal',
-              'Chien',
-              'Chat',
-              'Oiseau',
-              'Rongeur',
-            ].map((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-            onChanged: (String? newValue) {
-              print('Option sélectionnée : $newValue');
-            },
-          ),
+        body: Column(
+          children: [
+            TypeAnimal(), // appel du menu déroulant type animal
+            // Widget TextField pour nom de l'animal
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Nom de l\'animal',
+              ),
+              onChanged: (value) {
+              },
+            ),
+            SexeAnimal(), // appel du menu déroulant sexe animal
+            DateOfBirthPicker(), // appel de la methode pour la date de naissance
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Nom du vétérinaire',
+              ),
+              onChanged: (value) {
+              },
+            ),
+          ],
         ),
       ),
     );
@@ -122,3 +249,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+
+
+
