@@ -71,7 +71,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      body: Center(
+      body: SingleChildScrollView(
+        child : Center(
         child: Column(
           children: [
             Container(
@@ -181,6 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
+      ),
       ),
     );
   }
