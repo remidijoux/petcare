@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-//import 'FindVet.dart';
+import 'FindVet.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,11 +36,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void navigateToFindVet() {
-    /*
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => FindVet()),
-    );*/
+    );
   }
 
 
