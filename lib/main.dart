@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'FindVet.dart';
+import 'Blog.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,7 +56,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void navigateToBlog() {
-    // page du blog
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => BlogPage()),
+    );
   }
 
   @override
