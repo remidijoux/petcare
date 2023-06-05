@@ -4,6 +4,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:petcare/screens/carnet_de_sante.dart';
 import 'firebase_options.dart';
 import 'package:petcare/screens/FindVet.dart';
+// import 'Blog.dart';
+import 'package:petcare/screens/LocalisationAnimal.dart';
+
 
 
 void main() async {
@@ -62,7 +65,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void navigateToAnimalLocation() {
-    // localisation de l'animal
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LocalisationAnimal()),
+    );
   }
 
   void navigateToBlog() {
