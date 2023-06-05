@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'FindVet.dart';
 import 'Blog.dart';
+import 'LocalisationAnimal.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,7 +53,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void navigateToAnimalLocation() {
-    // localisation de l'animal
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LocalisationAnimal()),
+    );
   }
 
   void navigateToBlog() {
