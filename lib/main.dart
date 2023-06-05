@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void navigateToDestinationPage(BuildContext context) {}
 
   void navigateToFoodRecommendations() {
-    // recommandat-ions de nourriture
+    // recommandations de nourriture
   }
 
   void navigateToAnimalLocation() {
