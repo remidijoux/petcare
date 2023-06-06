@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+// Importer les plugins firebase_core et cloud_firestore
+import 'package:firebase_core/firebase_core.dart';
+import 'package:petcare/widgets/carnet_de_sante.dart';
+import 'firebase_options.dart';
 
-//import 'FindVet.dart';
-
-void main() {
+void main() async {
   runApp(const MyApp());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -33,22 +38,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   void navigateToHealthBook() {
     //carnet de santé
-  }
-
-  void navigateToFindVet() {
-    /*
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => FindVet()),
-    );*/
+      MaterialPageRoute(builder: (context) => carnetSante()),
+    );
   }
 
+  void navigateToFindVet() {}
 
-  void navigateToDestinationPage(BuildContext context) {
-  }
+  void navigateToDestinationPage(BuildContext context) {}
 
   void navigateToFoodRecommendations() {
-    // recommandat-ions de nourriture
+    // recommandations de nourriture
   }
 
   void navigateToAnimalLocation() {
@@ -64,125 +65,130 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Container(
-          alignment: Alignment.center,
+          alignment: Alignment.centerLeft,
+          padding: const EdgeInsets.only(left: 16.0),
           child: Text(
-            widget.title,
-            style: TextStyle(fontSize: 20),
+            'PetCare',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
         ),
       ),
       body: SingleChildScrollView(
-        child : Center(
-        child: Column(
-          children: [
-            Container(
-              height: 200,
-              child: Image.asset('../assets/images/Animaux.png'),
-            ),
-            SizedBox(height: 16),
-            GridView.count(
-              shrinkWrap: true,
-              crossAxisCount: 2,
-              childAspectRatio: 2.5,
-              padding: const EdgeInsets.all(16.0),
-              mainAxisSpacing: 16.0,
-              crossAxisSpacing: 16.0,
-              children: [
-                ElevatedButton(
-                  onPressed: navigateToHealthBook,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        '../assets/images/carneSante.png',
-                        width: 120,
-                        height: 120,
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Carnet de santé',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
+        child: Center(
+          child: Column(
+            children: [
+              Container(
+                height: 200,
+                child: Image.asset('../assets/images/Animaux.png'),
+              ),
+              SizedBox(height: 16),
+              GridView.count(
+                shrinkWrap: true,
+                crossAxisCount: 2,
+                childAspectRatio: 2.5,
+                padding: const EdgeInsets.all(16.0),
+                mainAxisSpacing: 16.0,
+                crossAxisSpacing: 16.0,
+                children: [
+                  ElevatedButton(
+                    onPressed: navigateToHealthBook,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          '../assets/images/carneSante.png',
+                          width: 120,
+                          height: 120,
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'Carnet de santé',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                ElevatedButton(
-                  onPressed: navigateToFindVet,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        '../assets/images/veterinaire.png',
-                        width: 120,
-                        height: 120,
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Trouver un vétérinaire',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
+                  ElevatedButton(
+                    onPressed: navigateToFindVet,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          '../assets/images/veterinaire.png',
+                          width: 120,
+                          height: 120,
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'Trouver un vétérinaire',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                ElevatedButton(
-                  onPressed: navigateToFoodRecommendations,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        '../assets/images/croquettes.png',
-                        width: 120,
-                        height: 120,
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Recommandations nourriture',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
+                  ElevatedButton(
+                    onPressed: navigateToFoodRecommendations,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          '../assets/images/croquettes.png',
+                          width: 120,
+                          height: 120,
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'Recommandations nourriture',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                ElevatedButton(
-                  onPressed: navigateToAnimalLocation,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        '../assets/images/endroit.png',
-                        width: 120,
-                        height: 120,
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Localisation de mon animal',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
+                  ElevatedButton(
+                    onPressed: navigateToAnimalLocation,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          '../assets/images/endroit.png',
+                          width: 120,
+                          height: 120,
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'Localisation de mon animal',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                ElevatedButton(
-                  onPressed: navigateToBlog,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        '../assets/images/blog.png',
-                        width: 120,
-                        height: 120,
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Blog',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
+                  ElevatedButton(
+                    onPressed: navigateToBlog,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          '../assets/images/blog.png',
+                          width: 120,
+                          height: 120,
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'Blog',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
-      ),
       ),
     );
   }
