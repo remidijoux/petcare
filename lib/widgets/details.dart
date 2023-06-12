@@ -43,13 +43,13 @@ class Details extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Chip(
-                          label: Text("Pet name"),
+                          label: Text("informations de votre animal de compagnie"),
                           // background color
                           labelStyle: TextStyle(color: Colors.white)),
                       Text(petUser.petName as String,
                           style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 18.0)),
-                      Text(petUser.vetName as String),
+                      Text("Nom veterinaire : ${petUser.vetName as String}"),
                       Row(
                         children: [
                           const SizedBox(height: 20.0),
@@ -58,10 +58,9 @@ class Details extends StatelessWidget {
                             style: OutlinedButton.styleFrom(
                               primary: Colors.blueAccent,
                             ),
-                            child: Text(petUser.petType as String ,
+                            child: Text(petUser.petType as String,
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold,
-
                                     fontSize: 14.0)),
                           )
                         ],

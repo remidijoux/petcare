@@ -12,8 +12,8 @@ class  submitBtn  extends StatelessWidget {
       padding: const EdgeInsets.only(top: 30.0),
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
-    minimumSize: const Size(200, 50),
-    ),
+          minimumSize: const Size(200, 50),
+        ),
         onPressed: onPress,
 
         child: Text("Submit".toUpperCase(),

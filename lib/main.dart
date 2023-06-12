@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // Importer les plugins firebase_core et cloud_firestore
 import 'package:firebase_core/firebase_core.dart';
-import 'package:petcare/widgets/carnet_de_sante.dart';
+import 'package:petcare/screens/carnet_de_sante.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void navigateToDestinationPage(BuildContext context) {}
 
   void navigateToFoodRecommendations() {
-    // recommandations de nourriture
+    // recommandat-ions de nourriture
   }
 
   void navigateToAnimalLocation() {
