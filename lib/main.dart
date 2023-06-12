@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:petcare/screens/carnet_de_sante.dart';
 import 'firebase_options.dart';
+import 'package:petcare/screens/FindVet.dart';
+
 
 void main() async {
   runApp(const MyApp());
@@ -34,7 +36,6 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
-
 class _MyHomePageState extends State<MyHomePage> {
   void navigateToHealthBook() {
     //carnet de santé
@@ -44,7 +45,15 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void navigateToFindVet() {}
+  void navigateToFindVet() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => FindVet()),
+
+    );
+  }
+
+
 
   void navigateToDestinationPage(BuildContext context) {}
 
