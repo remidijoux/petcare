@@ -7,6 +7,10 @@ import 'package:petcare/screens/FindVet.dart';
 import 'package:petcare/screens/LocalisationAnimal.dart';
 
 
+// TODO 1 : fix the Bottom Overflowed" error in the homePage (the content within a widget exceeds the available space)
+//TODO 2 :creating reusable widgets "ElevatedButton"
+// TODO  3 : rename the homePage class in this file
+
 void main() async {
   runApp(const MyApp());
   await Firebase.initializeApp(
@@ -62,10 +66,10 @@ class _MyHomePageState extends State<MyHomePage> {
     // recommandat-ions de nourriture
   }
 
-  void navigateToAnimalLocation() {
+  void navigateToAnimalLocation(String petName) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => LocalisationAnimal()),
+      MaterialPageRoute(builder: (context) => LocalisationAnimal(petName: petName)),
     );
   }
 
@@ -162,7 +166,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: navigateToAnimalLocation,
+                    onPressed: () {
+                   //   String petName = _petnamecontroller.text;
+                    //  navigateToAnimalLocation(petName);
+                    },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

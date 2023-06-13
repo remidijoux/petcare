@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-void main() => runApp(LocalisationAnimal());
 
 class LocalisationAnimal extends StatefulWidget {
+  final String petName;
+
   @override
+  const LocalisationAnimal({Key? key, required this.petName}) : super(key: key);
   _LocalisationAnimalState createState() => _LocalisationAnimalState();
 }
 
@@ -14,12 +17,7 @@ class _LocalisationAnimalState extends State<LocalisationAnimal> {
   late Position currentPosition;
   Set<Marker> animalLocations = Set<Marker>();
 
-  @override
-  void initState() {
-    super.initState();
-    _getCurrentLocation();
-    _addAnimalLocations();
-  }
+
 
   void _getCurrentLocation() async {
     Position position = await Geolocator.getCurrentPosition(
@@ -29,18 +27,13 @@ class _LocalisationAnimalState extends State<LocalisationAnimal> {
     });
   }
 
-  void _addAnimalLocations() {
+  void _addAnimalLocations(String petName) {
     final List<LatLng> animalCoordinates = [
       LatLng(45.832384, 1.264467), // Halles Centrales
       LatLng(45.832482, 1.255361), // Pl. de la Motte
       LatLng(45.838335, 1.271404), // 1B Font Pinot
     ];
 
-    final List<String> animalNames = [
-      "Chien 1",
-      "Chat 1",
-      "Chien 2",
-    ];
 
     for (int i = 0; i < animalCoordinates.length; i++) {
       animalLocations.add(
@@ -48,9 +41,17 @@ class _LocalisationAnimalState extends State<LocalisationAnimal> {
           markerId: MarkerId('Animal $i'),
           position: animalCoordinates[i],
           icon: BitmapDescriptor.defaultMarker,
-          infoWindow: InfoWindow(title: animalNames[i]),
+          infoWindow: InfoWindow(title: widget.petName),
         ),
       );
+
+      // Store the animal coordinates in Firestore
+      final animalCollection = FirebaseFirestore.instance.collection('locatePets');
+      animalCollection.add({
+        'latitude': animalCoordinates[i].latitude,
+        'longitude': animalCoordinates[i].longitude,
+        'name': widget.petName,
+      });
     }
   }
 
