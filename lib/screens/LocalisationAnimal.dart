@@ -31,9 +31,9 @@ class _LocalisationAnimalState extends State<LocalisationAnimal> {
 
   void _addAnimalLocations() {
     final List<LatLng> animalCoordinates = [
-      LatLng(45.832384, 1.264467), // Halles Centrales
-      LatLng(45.832482, 1.255361), // Pl. de la Motte
-      LatLng(45.838335, 1.271404), // 1B Font Pinot
+      LatLng(45.75, 4.85),
+      LatLng(45.76, 4.85),
+      LatLng(45.77, 4.85),
     ];
 
     final List<String> animalNames = [

@@ -16,6 +16,7 @@ class FindVet extends StatefulWidget {
 }
 
 class _FindVetState extends State<FindVet> {
+  BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
   late GoogleMapController _mapController;
   Position? _currentPosition;
   Set<Marker> _markers = {};
@@ -47,9 +48,11 @@ class _FindVetState extends State<FindVet> {
 
 
 
+
   void _searchVetsNearby() async {
     final url =
-        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${_currentPosition!.latitude},${_currentPosition!.longitude}&radius=5000&type=veterinary_care&key=AIzaSyAiAicJJVzhh7pwoy2O14gWhKWbErAws9k';
+        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${_currentPosition!.latitude},${_currentPosition!.longitude}&radius=5000&type=veterinary_care&keyword=Veterinaire&key=AIzaSyAiAicJJVzhh7pwoy2O14gWhKWbErAws9k';
+
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
