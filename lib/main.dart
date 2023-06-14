@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'FindVet.dart';
 import 'Blog.dart';
 import 'LocalisationAnimal.dart';
+import 'widgets/custom_elevatedbutton.dart';
 
 void main() {
   runApp(const MyApp());
@@ -94,95 +95,30 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisSpacing: 16.0,
               crossAxisSpacing: 16.0,
               children: [
-                ElevatedButton(
+                CustomElevatedButton(
                   onPressed: navigateToHealthBook,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        '../assets/images/carneSante.png',
-                        width: 120,
-                        height: 120,
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Carnet de santé',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  ),
+                  buttonText: 'Carnet de santé',
+                  imagePath: '../assets/images/carneSante.png',
                 ),
-                ElevatedButton(
+                CustomElevatedButton(
                   onPressed: navigateToFindVet,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        '../assets/images/veterinaire.png',
-                        width: 120,
-                        height: 120,
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Trouver un vétérinaire',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  ),
+                  buttonText: 'Trouver un vétérinaire',
+                  imagePath: '../assets/images/veterinaire.png',
                 ),
-                ElevatedButton(
+                CustomElevatedButton(
                   onPressed: navigateToFoodRecommendations,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        '../assets/images/croquettes.png',
-                        width: 120,
-                        height: 120,
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Recommandations nourriture',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  ),
+                  buttonText: 'Recommandations nourriture',
+                  imagePath: '../assets/images/croquettes.png',
                 ),
-                ElevatedButton(
+                CustomElevatedButton(
                   onPressed: navigateToAnimalLocation,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        '../assets/images/endroit.png',
-                        width: 120,
-                        height: 120,
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Localisation de mon animal',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  ),
+                  buttonText: 'Localisation de mon animal',
+                  imagePath: '../assets/images/endroit.png',
                 ),
-                ElevatedButton(
+                CustomElevatedButton(
                   onPressed: navigateToBlog,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        '../assets/images/blog.png',
-                        width: 120,
-                        height: 120,
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Blog',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  ),
+                  buttonText: 'Blog',
+                  imagePath: '../assets/images/blog.png',
                 ),
               ],
             ),
