@@ -202,13 +202,7 @@
                                 'lastVisitDate': petUser.lastVisitDate,
                               });
 
-                              // Call _addAnimalLocations and pass the petName value
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => LocalisationAnimal(petName : _petnamecontroller.text),
-                                ),
-                              );
+
                              // success message
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(

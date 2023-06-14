@@ -5,7 +5,8 @@ import 'package:petcare/screens/carnet_de_sante.dart';
 import 'firebase_options.dart';
 import 'package:petcare/screens/FindVet.dart';
 import 'package:petcare/screens/LocalisationAnimal.dart';
-
+import 'package:petcare/screens/Blog.dart';
+import 'widgets/custom_elevatedbutton.dart';
 
 // TODO 1 : fix the Bottom Overflowed" error in the homePage (the content within a widget exceeds the available space)
 //TODO 2 :creating reusable widgets "ElevatedButton"
@@ -66,15 +67,21 @@ class _MyHomePageState extends State<MyHomePage> {
     // recommandat-ions de nourriture
   }
 
-  void navigateToAnimalLocation(String petName) {
+
+  void navigateToAnimalLocation() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => LocalisationAnimal(petName: petName)),
+      MaterialPageRoute(builder: (context) => LocalisationAnimal()),
+
     );
   }
 
   void navigateToBlog() {
-    // page du blog
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => BlogPage()),
+
+    );
   }
 
   @override
@@ -94,120 +101,47 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              Container(
-                height: 200,
-                child: Image.asset('../assets/images/Animaux.png'),
-              ),
-              SizedBox(height: 16),
-              GridView.count(
-                shrinkWrap: true,
-                crossAxisCount: 2,
-                childAspectRatio: 2.5,
-                padding: const EdgeInsets.all(16.0),
-                mainAxisSpacing: 16.0,
-                crossAxisSpacing: 16.0,
-                children: [
-                  ElevatedButton(
-                    onPressed: navigateToHealthBook,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          '../assets/images/carneSante.png',
-                          width: 120,
-                          height: 120,
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          'Carnet de santé',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: navigateToFindVet,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          '../assets/images/veterinaire.png',
-                          width: 120,
-                          height: 120,
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          'Trouver un vétérinaire',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: navigateToFoodRecommendations,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          '../assets/images/croquettes.png',
-                          width: 120,
-                          height: 120,
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          'Recommandations nourriture',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                   //   String petName = _petnamecontroller.text;
-                    //  navigateToAnimalLocation(petName);
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          '../assets/images/endroit.png',
-                          width: 120,
-                          height: 120,
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          'Localisation de mon animal',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: navigateToBlog,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          '../assets/images/blog.png',
-                          width: 120,
-                          height: 120,
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          'Blog',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+
+      body: Center(
+        child: Column(
+          children: [
+            Container(
+              height: 200,
+              child: Image.asset('../assets/images/Animaux.png'),
+            ),
+            SizedBox(height: 16),
+            GridView.count(
+              shrinkWrap: true,
+              crossAxisCount: 2,
+              childAspectRatio: 2.5,
+              padding: const EdgeInsets.all(16.0),
+              mainAxisSpacing: 16.0,
+              crossAxisSpacing: 16.0,
+              children: [
+                CustomElevatedButton(
+                  onPressed: navigateToHealthBook,
+                  buttonText: 'Carnet de santé',
+                  imagePath: '../assets/images/carneSante.png',
+                ),
+                CustomElevatedButton(
+                  onPressed: navigateToFindVet,
+                  buttonText: 'Trouver un vétérinaire',
+                  imagePath: '../assets/images/veterinaire.png',
+                ),
+                CustomElevatedButton(
+                  onPressed: navigateToAnimalLocation,
+                  buttonText: 'Localisation de mon animal',
+                  imagePath: '../assets/images/endroit.png',
+                ),
+                CustomElevatedButton(
+                  onPressed: navigateToBlog,
+                  buttonText: 'Blog',
+                  imagePath: '../assets/images/blog.png',
+                ),
+              ],
+            ),
+          ],
+
         ),
       ),
     );

@@ -12,5 +12,6 @@ class PetUser {
     this.vetName,
     this.isVaccinated,
     this.lastVisitDate,
+
   });
 }
