@@ -6,7 +6,7 @@
   import 'package:petcare/widgets/submit_btn.dart';
   import 'package:petcare/models/pet_user_model.dart';
   import 'package:cloud_firestore/cloud_firestore.dart';
-  import 'package:firebase_core/firebase_core.dart';
+ import 'LocalisationAnimal.dart';
 
 
   class carnetSante extends StatefulWidget {
@@ -181,8 +181,11 @@
                         const SizedBox(height: 20.0),
                         submitBtn(
                           onPress: () async {
+
                             if (_formKey.currentState!.validate()) {
                               PetUser petUser = PetUser();
+
+
 
                               petUser.petName = _petnamecontroller.text;
                               petUser.vetName = _petvetcontroller.text;
@@ -199,6 +202,13 @@
                                 'lastVisitDate': petUser.lastVisitDate,
                               });
 
+                              // Call _addAnimalLocations and pass the petName value
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LocalisationAnimal(petName : _petnamecontroller.text),
+                                ),
+                              );
                              // success message
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(

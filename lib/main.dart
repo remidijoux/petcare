@@ -3,6 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:petcare/screens/carnet_de_sante.dart';
 import 'firebase_options.dart';
+import 'package:petcare/screens/FindVet.dart';
+import 'package:petcare/screens/LocalisationAnimal.dart';
+
+
+// TODO 1 : fix the Bottom Overflowed" error in the homePage (the content within a widget exceeds the available space)
+//TODO 2 :creating reusable widgets "ElevatedButton"
+// TODO  3 : rename the homePage class in this file
 
 void main() async {
   runApp(const MyApp());
@@ -34,7 +41,6 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
-
 class _MyHomePageState extends State<MyHomePage> {
   void navigateToHealthBook() {
     //carnet de santé
@@ -44,7 +50,15 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void navigateToFindVet() {}
+  void navigateToFindVet() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => FindVet()),
+
+    );
+  }
+
+
 
   void navigateToDestinationPage(BuildContext context) {}
 
@@ -52,8 +66,11 @@ class _MyHomePageState extends State<MyHomePage> {
     // recommandat-ions de nourriture
   }
 
-  void navigateToAnimalLocation() {
-    // localisation de l'animal
+  void navigateToAnimalLocation(String petName) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LocalisationAnimal(petName: petName)),
+    );
   }
 
   void navigateToBlog() {
@@ -149,7 +166,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: navigateToAnimalLocation,
+                    onPressed: () {
+                   //   String petName = _petnamecontroller.text;
+                    //  navigateToAnimalLocation(petName);
+                    },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
